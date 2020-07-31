@@ -16,13 +16,14 @@ class GameViewController: UIViewController, BoardViewControllerDelegate {
         case won(GameBoard.Mark) // Winning player
     }
     
+    //MARK: - IBActions and Methods -
+    
     @IBAction func restartGame(_ sender: Any) {
         board = GameBoard()
         gameState = .active(.x)
     }
     
-    // MARK: - BoardViewControllerDelegate
-    
+    // - BoardViewControllerDelegate -
     func boardViewController(_ boardViewController: BoardViewController, markWasMadeAt coordinate: Coordinate) {
         guard case let GameState.active(player) = gameState else {
             NSLog("Game is over")
@@ -44,7 +45,7 @@ class GameViewController: UIViewController, BoardViewControllerDelegate {
         }
     }
     
-    // MARK: - Private
+    // Private
     
     private func updateViews() {
         guard isViewLoaded else { return }
